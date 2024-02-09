@@ -8,10 +8,7 @@ export default function setupExpress(app) {
     app.engine('.hbs', handlebars({
         extname: '.hbs'
     }));
-    app.set('view engine', '.hbs'); 
-    // app.engine('.hbs', engine());
-    // app.set('view engine', 'handlebars');
-    // app.set('views', './views');
+    app.set('view engine', '.hbs');
 
     //Setup the static files
     app.use('/static', express.static('static'));
