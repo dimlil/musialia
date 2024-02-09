@@ -11,7 +11,7 @@ export default function setupExpress(app) {
     app.set('view engine', '.hbs');
 
     //Setup the static files
-    app.use('/static', express.static('static'));
+    app.use('/statics', express.static('static'));
 
     app.use('/', indexRoute);
 
