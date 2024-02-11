@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin: 0 auto;
+    @media screen and (min-width: 1200px){
+        max-width: 1170px;
+    }
+    nav{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        a{
+            color: white;
+            background-color: #0594ed;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 15px;
+        }
+    }
+}
