@@ -4,12 +4,15 @@ import { indexRoute } from '../routes/index.js';
 import mongoose from 'mongoose';
 import { authRouter } from '../routes/auth.js';
 import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 export default function setupExpress(app) {
     // app.use(express.urlencoded({ extended: true})); 
     app.use(cookieParser());
 
-    //Setup the body parser
-    app.use(express.json())
+    //Setup the body parser and express.json
+    app.use(express.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
 
     //Setup the view engine
     app.engine('.hbs', handlebars({
