@@ -3,17 +3,11 @@ import { engine as handlebars } from "express-handlebars"
 import { indexRoute } from '../routes/index.js';
 import mongoose from 'mongoose';
 import { authRouter } from '../routes/auth.js';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
 import session from 'express-session';
 export default function setupExpress(app) {
-    // app.use(express.urlencoded({ extended: true})); 
-    app.use(cookieParser());
-
     //Setup the body parser and express.json
+    app.use(express.urlencoded({ extended: true}));
     app.use(express.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
 
     //Setup session
     app.use(session({
