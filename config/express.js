@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { authRouter } from '../routes/auth.js';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import session from 'express-session';
 export default function setupExpress(app) {
     // app.use(express.urlencoded({ extended: true})); 
     app.use(cookieParser());
@@ -13,6 +14,14 @@ export default function setupExpress(app) {
     app.use(express.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
+
+    //Setup session
+    app.use(session({
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: true }
+      }))
 
     //Setup the view engine
     app.engine('.hbs', handlebars({
