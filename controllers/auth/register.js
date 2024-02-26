@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import userSchema from '../../models/user.js';
+import { generateToken } from './verify.js';
 
 export const registerUser = async (req, res) => {
     let { email, password } = req.body;
@@ -13,12 +14,10 @@ export const registerUser = async (req, res) => {
     try {
         await user.save();
         const token = await generateToken(email);
-        //    res.cookie('token', token);
-        //    res.cookie('role', "user");
         req.session.token = token;
         req.session.role = "user";
-        return res.redirect('/');;
+        return res.redirect('/');
     } catch (error) {
-
+        console.log(error);
     }
 }

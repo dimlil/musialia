@@ -12,8 +12,7 @@ router.get('/register', async(req, res) => {
 })
 router.post('/register', async(req, res) => {
     try {
-        await registerUser(req, res)
-        res.redirect('/')
+        await registerUser(req, res);
     } catch (err) {
         console.log(err);
         res.redirect('/register')
