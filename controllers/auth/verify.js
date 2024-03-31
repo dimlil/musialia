@@ -4,13 +4,14 @@ export const generateToken = (data) => {
     const token = jwt.sign(data, process.env.PRIVATE_KEY);
     return token;
 }
-export const verifyUser = async (req, res) => {
-    const { token } = req.params;
-
+export const verifyUser = async (req, res, next) => {
+    const { token } = req.session;
+    console.log(token);
     try {
         jwt.verify(token, process.env.PRIVATE_KEY);
-        return true
+        req.isLoggedIn = true;
     } catch (error) {
-        return false
+        req.isLoggedIn = false;
     }
+    next();
 }

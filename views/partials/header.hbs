@@ -4,8 +4,20 @@
         {{#if isLoggedIn}}
             {{#if isAdmin}}
                 {{!-- admin --}}
+                <a href="/admin">
+                    Администрация
+                </a>
+                <a href="/registerUsersAdmin">
+                    Регистрирани потребители
+                </a>
             {{else}}
                 {{!-- user --}}
+                 <a href="/contacts">
+                     Контакти
+                </a>
+                <a href="/products">
+                    Всички продукти
+                </a>
             {{/if}}
             {{else}}
                 {{!-- not logged in --}}
