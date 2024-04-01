@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { registerUser } from "../controllers/auth/register.js";
 import { loginUser } from "../controllers/auth/login.js";
+import { logout } from "../controllers/auth/logout.js";
 
 const router = new Router();
 
@@ -33,5 +34,9 @@ router.post('/login', async(req, res) => {
         console.log(err);
         res.redirect('/login')
     }
+})
+
+router.get('/logout', async(req, res) => {
+    logout(req,res);
 })
 export { router as authRouter }
