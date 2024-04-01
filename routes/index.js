@@ -6,7 +6,6 @@ const router = new Router();
 router.get('/', verifyUser, async(req, res) => {
 
     try {
-        console.log(req.session.role);
         res.render('home',{
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false
