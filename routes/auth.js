@@ -2,6 +2,8 @@ import { Router } from "express";
 import { registerUser } from "../controllers/auth/register.js";
 import { loginUser } from "../controllers/auth/login.js";
 import { logout } from "../controllers/auth/logout.js";
+import { getAllUsers } from "../controllers/auth/getAllUsers.js";
+import { verifyUser } from "../controllers/auth/verify.js";
 
 const router = new Router();
 
@@ -38,5 +40,15 @@ router.post('/login', async(req, res) => {
 
 router.get('/logout', async(req, res) => {
     logout(req,res);
+})
+
+router.get('/registerUsersAdmin', verifyUser, async(req, res) => {
+    try {
+        const users = await getAllUsers();
+        console.log(users);
+        res.render('registerUsersAdmin', {users});
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
 })
 export { router as authRouter }

@@ -1,0 +1,11 @@
+<div class="usersWrapper">
+    <h3>users</h3>
+    {{#each users}}
+    <div class="box">
+        <h3>{{this.email}}</h3>
+        <a href="/deleteUser/{{this._id}}">
+            <img src="./statics/icons/deleteIcon.png" class="delete" alt="delete user icon">
+        </a>
+    </div>
+    {{/each}}
+</div>
