@@ -3,9 +3,21 @@
     {{#each users}}
     <div class="box">
         <h3>{{this.email}}</h3>
-        <a href="/deleteUser/{{this._id}}">
+        {{!-- <a href="/deleteUser/{{this._id}}">
             <img src="./statics/icons/deleteIcon.png" class="delete" alt="delete user icon">
-        </a>
+        </a> --}}
+            <img src="./statics/icons/deleteIcon.png" class="deleteUserIcon" alt="delete user icon" data-userId="{{this._id}}">
     </div>
     {{/each}}
+    <script>
+        const deleteUserIcons = document.querySelectorAll('.deleteUserIcon');
+        deleteUserIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const userId = e.target.getAttribute('data-userId');
+                fetch(`/deleteUser/${userId}`, {
+                    method: 'DELETE'
+                })
+            })
+        })
+    </script>
 </div>

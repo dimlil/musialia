@@ -4,6 +4,7 @@ import { loginUser } from "../controllers/auth/login.js";
 import { logout } from "../controllers/auth/logout.js";
 import { getAllUsers } from "../controllers/auth/getAllUsers.js";
 import { verifyUser } from "../controllers/auth/verify.js";
+import { deleteUser } from "../controllers/auth/deleteUser.js";
 
 const router = new Router();
 
@@ -50,5 +51,9 @@ router.get('/registerUsersAdmin', verifyUser, async(req, res) => {
     } catch (error) {
         res.status(500).send(error.message)
     }
+})
+
+router.delete('/deleteUser/:id', async(req, res) => {
+    deleteUser(req,res);
 })
 export { router as authRouter }
