@@ -9,6 +9,10 @@ const itemsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    mainfacturer:{
+        type: String,
+        required: true
+    },
     description:{
         type: String,
         required: true
