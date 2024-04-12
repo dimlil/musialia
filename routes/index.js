@@ -15,4 +15,11 @@ router.get('/', verifyUser, async(req, res) => {
     }
 })
 
+router.get('/admin', async(req, res) => {
+    try {
+        res.render('create');
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
 export { router as indexRoute }

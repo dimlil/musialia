@@ -1,5 +1,6 @@
 @import url(./components/header/header.css);
 @import url(./pages/register/register.css);
+@import url(./pages/create/Create.css);
 @import url(./pages/registerUsersAdmin/registerUsersAdmin.css);
 
 body{
