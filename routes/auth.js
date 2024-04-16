@@ -47,7 +47,11 @@ router.get('/registerUsersAdmin', verifyUser, async(req, res) => {
     try {
         const users = await getAllUsers();
         console.log(users);
-        res.render('registerUsersAdmin', {users});
+        res.render('registerUsersAdmin', {
+            users,
+            isLoggedIn: req.isLoggedIn,
+            isAdmin: req.session.role === 'admin' ? true : false
+        });
     } catch (error) {
         res.status(500).send(error.message)
     }

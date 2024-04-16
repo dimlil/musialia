@@ -16,9 +16,12 @@ router.get('/', verifyUser, async(req, res) => {
     }
 })
 
-router.get('/admin', async(req, res) => {
+router.get('/admin', verifyUser, async(req, res) => {
     try {
-        res.render('create');
+        res.render('create',{
+            isLoggedIn: req.isLoggedIn,
+            isAdmin: req.session.role === 'admin' ? true : false
+        });
     } catch (error) {
         res.status(500).send(error.message);
     }
