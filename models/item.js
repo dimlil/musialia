@@ -9,7 +9,7 @@ const itemsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    mainfacturer:{
+    manufacturer:{
         type: String,
         required: true
     },

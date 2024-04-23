@@ -1,12 +1,12 @@
 import itemsSchema from '../../models/item.js';
 
 export const createItem = async (req, res) => {
-    const { name, imageUrl, mainfacturer, description, type, price, quantity } = req.body;
+    const { name, imageUrl, manufacturer, description, type, price, quantity } = req.body;
 
     const item = new itemsSchema({
         name,
         imageUrl,
-        mainfacturer,
+        manufacturer,
         description,
         type,
         price,
