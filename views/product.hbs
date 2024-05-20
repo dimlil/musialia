@@ -1,0 +1,13 @@
+<div class="postWrapper">
+    {{#if items}}
+       <div class="box">
+        <img src="{{items.imageUrl}}" alt="product image">
+       <div>
+            <h3>{{items.name}}</h3>
+            <p>Цена: {{items.price}} лв.</p>
+            <p>Производител: {{items.mainfacturer}}</p>
+            <p>Тип: {{items.type}}</p>
+            <p>Описание: {{items.description}}</p>
+       </div>
+    {{/if }}
+</div>
