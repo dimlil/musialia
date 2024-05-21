@@ -1,38 +1,42 @@
 <header>
-    Logo img
-    <nav>
-        {{#if isLoggedIn}}
+    <div class="headerWrapper">
+        <a href="/">
+            <img src="/statics/logo.png" class="logo" alt="logo">
+        </a>
+        <nav>
+            {{#if isLoggedIn}}
             {{#if isAdmin}}
-                {{!-- admin --}}
-                <a href="/admin">
-                    Администрация
-                </a>
-                <a href="/registerUsersAdmin">
-                    Регистрирани потребители
-                </a>
-                <a href="/logout">
-                    Изход
-                </a>
+            {{!-- admin --}}
+            <a href="/admin">
+                Администрация
+            </a>
+            <a href="/registerUsersAdmin">
+                Регистрирани потребители
+            </a>
+            <a href="/logout">
+                Изход
+            </a>
             {{else}}
-                {{!-- user --}}
-                 <a href="/contacts">
-                     Контакти
-                </a>
-                <a href="/products">
-                    Всички продукти
-                </a>
-             <a href="/logout">
-                    Изход
+            {{!-- user --}}
+            <a href="/contacts">
+                Контакти
+            </a>
+            <a href="/products">
+                Всички продукти
+            </a>
+            <a href="/logout">
+                Изход
             </a>
             {{/if}}
             {{else}}
-                {{!-- not logged in --}}
+            {{!-- not logged in --}}
             <a href="/login">
                 Вход
             </a>
             <a href="/register">
                 Регистрация
             </a>
-        {{/if}}
-    </nav>
+            {{/if}}
+        </nav>
+    </div>
 </header>

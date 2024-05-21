@@ -3,6 +3,7 @@ import { verifyUser } from "../controllers/auth/verify.js";
 import { createItem } from "../controllers/posts/create.js";
 import { getAllItems } from "../controllers/posts/getItems.js";
 import { getItemById } from "../controllers/posts/getItemById.js";
+import { deleteItem } from "../controllers/auth/deleteItem.js";
 
 const router = new Router();
 
@@ -54,6 +55,14 @@ router.post('/create', async(req, res) => {
         await createItem(req, res);
     } catch (error) {
         res.status(500).send(error.message);
+    }
+})
+
+router.get('/deleteItem/:id', verifyUser, async(req, res) => {
+    try {
+        await deleteItem(req, res);
+    } catch (error) {
+        res.status(500).send(error.message)
     }
 })
 export { router as indexRoute }
