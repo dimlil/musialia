@@ -1,6 +1,13 @@
 .allPostsWrapper{
-    display: flex;
+    display: grid;
+    justify-content: center;
     gap: 1rem;
+    @media screen and (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
     .box{
         display: flex;
         flex-direction: column;
