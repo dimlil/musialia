@@ -1,0 +1,36 @@
+{{#if item}}
+<form id="createForm" action="/updateItem/{{item._id}}" method="POST">
+    <h2>Промени</h2>
+    <div class="inputes-wrapper">
+        <div class="input-wrapper">
+            <label for="name">Име: </label>
+            <input type="text" id="name" name="name" value="{{item.name}}">
+        </div>
+        <div class="input-wrapper">
+            <label for="imageUrl">Снимка: </label>
+            <input type="text" id="imageUrl" name="imageUrl" value="{{item.imageUrl}}">
+        </div>
+        <div class="input-wrapper">
+            <label for="manufacturer">Производител: </label>
+            <input type="text" id="manufacturer" name="manufacturer" value="{{item.manufacturer}}">
+        </div>
+        <div class="input-wrapper">
+            <label for="description">Описание: </label>
+            <input type="text" id="description" name="description" value="{{item.description}}">
+        </div>
+        <div class="input-wrapper">
+            <label for="type">Тип: </label>
+            <input type="text" id="type" name="type" value="{{item.type}}">
+        </div>
+        <div class="input-wrapper">
+            <label for="price">Цена: </label>
+            <input type="text" id="price" name="price" value="{{item.price}}">
+        </div>
+        <div class="input-wrapper">
+            <label for="quantity">Брой в склада: </label>
+            <input type="text" id="quantity" name="quantity" value="{{item.quantity}}">
+        </div>
+        <button type="submit">Създаване</button>
+    </div>
+</form>
+{{/if}}
