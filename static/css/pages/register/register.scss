@@ -2,11 +2,13 @@
     max-width: 370px;
     margin: 0 auto;
     display: flex;
-    border: 2px solid #bdbdbd;
+    border: 2px solid #4D58D2;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f8f8f8;
+    box-shadow: 0 5px 10px rgb(23, 23, 23);
     .inputes-wrapper{
         display: flex;
         flex-direction: column;
@@ -22,6 +24,7 @@
                 height: 25px;
                 border: none;
                 border-radius: 5px;
+                background-color: #C9CBDF;
             }
         }
         button{
@@ -29,6 +32,11 @@
             border-radius: 15px;
             border: none;
             cursor: pointer;
+            background-color: #4D58D2;
+            color: #fff;
         }
+    }
+    a{
+        color: #4D58D2;
     }
 }
