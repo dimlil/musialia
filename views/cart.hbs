@@ -31,14 +31,6 @@
     document.querySelectorAll('.box').forEach(box => {
         ids.push(box.getAttribute('data-id'))
     })
-    document.querySelector('.checkoutBtn').addEventListener('click', (e) => {
-        e.preventDefault();
-        fetch('/checkout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ids})
-        })
-    })
+    console.log(document.querySelector('.checkoutBtn').attributes['href'])
+    document.querySelector('.checkoutBtn').href += `/${ids.join(',')}`
 </script>
