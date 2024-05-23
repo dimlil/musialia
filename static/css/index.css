@@ -4,6 +4,7 @@
 @import url(./pages/registerUsersAdmin/registerUsersAdmin.css);
 @import url(./pages/products/products.css);
 @import url(./pages/product/product.css);
+@import url(./pages/cart/cart.css);
 
 body{
     background-color: #C9CBDF;

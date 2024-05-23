@@ -5,7 +5,8 @@ import { getAllItems } from "../controllers/posts/getItems.js";
 import { getItemById } from "../controllers/posts/getItemById.js";
 import { deleteItem } from "../controllers/auth/deleteItem.js";
 import { updateItem } from "../controllers/posts/updateItem.js";
-import { addToCar } from "../controllers/posts/addToCar.js";
+import { addToCart } from "../controllers/posts/addToCart.js";
+import { getAllItemsById } from "../controllers/posts/getAllItemsById.js";
 
 const router = new Router();
 
@@ -26,6 +27,7 @@ router.get('/products', verifyUser, getAllItems, async(req, res) => {
             isAdmin: req.session.role === 'admin' ? true : false,
             items: req.items
         });
+        console.log(req.items);
     } catch (error) {
         res.status(500).send(error.message)
     }
@@ -88,17 +90,17 @@ router.post('/updateItem/:id', verifyUser, getItemById, async(req, res) => {
 
 router.get('/addToCart/:id', verifyUser, getItemById, async(req, res) => {
     try {
-        await addToCar(req, res);
+        await addToCart(req, res);
     } catch (error) {
         res.status(500).send(error.message)
     }
 });
-router.get('/cart', verifyUser, async(req, res) => {
+router.get('/cart', verifyUser, getAllItemsById, async(req, res) => {
     try {
-        res.render('edit',{
+        res.render('cart',{
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false,
-            item: req.items
+            cartItems: req.cartItems
         });
     } catch (error) {
         res.status(500).send(error.message)

@@ -1,0 +1,44 @@
+<div class="cart">
+  {{#if cartItems}}
+    {{#each cartItems}}
+    <div class="box" data-id="{{this._doc._id}}">
+        <img src="{{this._doc.imageUrl}}" alt="product image">
+        <div class="info">
+            <h3>{{this._doc.name}}</h3>
+            <p class="price">Цена: <span>{{this._doc.price}}</span> лв.</p>
+        </div>
+    </div>
+    {{/each}}
+    <div class="actions">
+        <p class="total"></p>
+        <a href="/checkout" class="checkoutBtn">Поръчай</a>
+    </div>
+    {{else}}
+    <p>Количката е празна. Вижте нашите <a href="/">продукти</a></p>
+    {{/if}}
+</div>
+
+<script>
+    const price = document.querySelectorAll('.price span');
+    const total = document.querySelector('.total');
+    let totalPrice = 0
+    price.forEach(span => {
+        totalPrice += Number(span.textContent)
+    })
+    total.textContent = `Общо: ${totalPrice.toFixed(2)} лв.`
+
+    const ids = [];
+    document.querySelectorAll('.box').forEach(box => {
+        ids.push(box.getAttribute('data-id'))
+    })
+    document.querySelector('.checkoutBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetch('/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ids})
+        })
+    })
+</script>
