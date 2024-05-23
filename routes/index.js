@@ -7,12 +7,13 @@ import { deleteItem } from "../controllers/auth/deleteItem.js";
 import { updateItem } from "../controllers/posts/updateItem.js";
 import { addToCart } from "../controllers/posts/addToCart.js";
 import { getAllItemsById } from "../controllers/posts/getAllItemsById.js";
+import { stripeSession } from "../controllers/posts/payment.js";
 
 const router = new Router();
 
-router.get('/', verifyUser, async(req, res) => {
+router.get('/', verifyUser, async (req, res) => {
     try {
-        res.render('home',{
+        res.render('home', {
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false
         });
@@ -20,21 +21,20 @@ router.get('/', verifyUser, async(req, res) => {
         res.status(500).send(error.message)
     }
 })
-router.get('/products', verifyUser, getAllItems, async(req, res) => {
+router.get('/products', verifyUser, getAllItems, async (req, res) => {
     try {
-        res.render('products',{
+        res.render('products', {
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false,
             items: req.items
         });
-        console.log(req.items);
     } catch (error) {
         res.status(500).send(error.message)
     }
 })
-router.get('/product/:id', verifyUser, getItemById, async(req, res) => {
+router.get('/product/:id', verifyUser, getItemById, async (req, res) => {
     try {
-        res.render('product',{
+        res.render('product', {
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false,
             items: req.items
@@ -44,9 +44,9 @@ router.get('/product/:id', verifyUser, getItemById, async(req, res) => {
     }
 })
 
-router.get('/admin', verifyUser, async(req, res) => {
+router.get('/admin', verifyUser, async (req, res) => {
     try {
-        res.render('create',{
+        res.render('create', {
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false
         });
@@ -54,7 +54,7 @@ router.get('/admin', verifyUser, async(req, res) => {
         res.status(500).send(error.message);
     }
 })
-router.post('/create', async(req, res) => {
+router.post('/create', async (req, res) => {
     try {
         await createItem(req, res);
     } catch (error) {
@@ -62,16 +62,16 @@ router.post('/create', async(req, res) => {
     }
 })
 
-router.get('/deleteItem/:id', verifyUser, async(req, res) => {
+router.get('/deleteItem/:id', verifyUser, async (req, res) => {
     try {
         await deleteItem(req, res);
     } catch (error) {
         res.status(500).send(error.message)
     }
 })
-router.get('/updateItem/:id', verifyUser, getItemById, async(req, res) => {
+router.get('/updateItem/:id', verifyUser, getItemById, async (req, res) => {
     try {
-        res.render('edit',{
+        res.render('edit', {
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false,
             item: req.items
@@ -80,7 +80,7 @@ router.get('/updateItem/:id', verifyUser, getItemById, async(req, res) => {
         res.status(500).send(error.message)
     }
 })
-router.post('/updateItem/:id', verifyUser, getItemById, async(req, res) => {
+router.post('/updateItem/:id', verifyUser, getItemById, async (req, res) => {
     try {
         await updateItem(req, res);
     } catch (error) {
@@ -88,20 +88,27 @@ router.post('/updateItem/:id', verifyUser, getItemById, async(req, res) => {
     }
 })
 
-router.get('/addToCart/:id', verifyUser, getItemById, async(req, res) => {
+router.get('/addToCart/:id', verifyUser, getItemById, async (req, res) => {
     try {
         await addToCart(req, res);
     } catch (error) {
         res.status(500).send(error.message)
     }
 });
-router.get('/cart', verifyUser, getAllItemsById, async(req, res) => {
+router.get('/cart', verifyUser, getAllItemsById, async (req, res) => {
     try {
-        res.render('cart',{
+        res.render('cart', {
             isLoggedIn: req.isLoggedIn,
             isAdmin: req.session.role === 'admin' ? true : false,
             cartItems: req.cartItems
         });
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+});
+router.post('/create-checkout-session', verifyUser, getAllItemsById, async (req, res) => {
+    try {
+        await stripeSession(req, res);
     } catch (error) {
         res.status(500).send(error.message)
     }
