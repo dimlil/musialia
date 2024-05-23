@@ -39,6 +39,13 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ ids })
+        }).then(res => {
+            if (res.ok) return res.json()
+            return res.json().then(json => Promise.reject(json))
+        }).then(({ url }) => {
+            window.location = url
+        }).catch(err => {
+            console.error(err)
         })
     })
 </script>
