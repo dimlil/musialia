@@ -54,6 +54,16 @@ router.get('/admin', verifyUser, async (req, res) => {
         res.status(500).send(error.message);
     }
 })
+router.get('/contacts', verifyUser, async (req, res) => {
+    try {
+        res.render('contacts', {
+            isLoggedIn: req.isLoggedIn,
+            isAdmin: req.session.role === 'admin' ? true : false
+        });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
 router.post('/create', async (req, res) => {
     try {
         await createItem(req, res);
