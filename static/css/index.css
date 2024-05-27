@@ -6,6 +6,7 @@
 @import url(./pages/product/product.css);
 @import url(./pages/cart/cart.css);
 @import url(./pages/contacts/contacts.css);
+@import url(./pages/homePage/home.css);
 
 body{
     background-color: #C9CBDF;

@@ -1,1 +1,21 @@
-<p>main</p>
+<div class="lastItems">
+    <h2>
+        Добре дошли в Musialia - музикалният рай!
+    </h2>
+    <p>Последно добавени:</p>
+    <div class="allPostsWrapper">
+        {{#if items}}
+            {{#each items}}
+            <div class="box">
+                <h3>{{this.name}}</h3>
+                <img src="{{this.imageUrl}}" alt="product image">
+                <p>{{this.price}} лв.</p>
+                <a href="/product/{{this._id}}">Повече</a>
+            </div>
+            {{/each}}
+            {{else}}
+            <p>Нямате добавени продукти</p>
+        {{/if }}
+    </div>
+    <p>Вижте нашите <a href="/products">продукти</a></p>
+</div>

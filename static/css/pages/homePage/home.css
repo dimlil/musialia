@@ -1,0 +1,1 @@
+.lastItems h2{text-align:center}.lastItems a{text-decoration:none;color:#4d58d2}.lastItems .allPostsWrapper{display:grid;justify-content:center;gap:1rem}@media screen and (min-width: 1200px){.lastItems .allPostsWrapper{grid-template-columns:repeat(3, 1fr)}}.lastItems .allPostsWrapper .box{max-width:400px}

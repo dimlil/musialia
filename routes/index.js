@@ -8,14 +8,16 @@ import { updateItem } from "../controllers/posts/updateItem.js";
 import { addToCart } from "../controllers/posts/addToCart.js";
 import { getAllItemsById } from "../controllers/posts/getAllItemsById.js";
 import { stripeSession } from "../controllers/posts/payment.js";
+import { getLatest3Items } from "../controllers/posts/getLatest3Items.js";
 
 const router = new Router();
 
-router.get('/', verifyUser, async (req, res) => {
+router.get('/', verifyUser, getLatest3Items, async (req, res) => {
     try {
         res.render('home', {
             isLoggedIn: req.isLoggedIn,
-            isAdmin: req.session.role === 'admin' ? true : false
+            isAdmin: req.session.role === 'admin' ? true : false,
+            items: req.items
         });
     } catch (error) {
         res.status(500).send(error.message)
