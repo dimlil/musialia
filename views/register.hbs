@@ -1,3 +1,8 @@
+{{#if error}}
+<section class="errorContainer">
+    <p> {{error}}</p>
+</section>
+{{/if}}
 <form id="regForm" action="/register" method="POST">
     <h2>Регистрация</h2>
     <div class="inputes-wrapper">
