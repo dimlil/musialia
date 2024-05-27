@@ -8,16 +8,50 @@
 @import url(./pages/contacts/contacts.css);
 @import url(./pages/homePage/home.css);
 
-body{
+body {
     background-color: #C9CBDF;
     margin: 0;
     font-family: "Poppins", sans-serif;
 }
 
-main{
+main {
     max-width: 90%;
     margin: 0 auto;
+
     @media screen and (min-width: 1200px) {
         max-width: 1170px;
+    }
+}
+
+.errorContainer {
+    position: fixed;
+    right: 2rem;
+    min-width: 100px;
+    display: block;
+    z-index: 11111;
+    top: 80px;
+    text-align: center;
+    border-radius: .5rem;
+    color: #fff;
+    font-style: italic;
+    height: auto;
+    animation: cssAnimation 0s ease-in 2s forwards;
+    animation-fill-mode: forwards
+}
+
+.errorContainer p {
+    background: #f50;
+    font-size: 23px;
+    padding: 20px;
+    height: auto;
+    margin-bottom: 0
+}
+
+@keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        padding: 0
     }
 }
