@@ -18,7 +18,7 @@ export const stripeSession = async (req, res) => {
             quantity: 1
         })),
         success_url: `${process.env.SERVER_URL}/success/${req.body.ids}`,
-        cancel_url: `${process.env.SERVER_URL}/cancel`,
+        cancel_url: `${process.env.SERVER_URL}/cart`,
     })
     // res.redirect(session.url);
     res.json({url: session.url})
