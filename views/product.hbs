@@ -13,7 +13,11 @@
                     <a href="/updateItem/{{items._id}}">Промени</a>
                     <a href="/deleteItem/{{items._id}}" class="deleteBtn">Изтрий</a>
                 {{else}}
+                    {{#if items.quantity}}
                     <a href="/addToCart/{{items._id}}">Купи</a>
+                    {{else}}
+                        <p>Няма в наличност</p>
+                    {{/if}}
                 {{/if}}
             </div>
             {{/if}}

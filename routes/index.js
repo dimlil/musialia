@@ -9,6 +9,7 @@ import { addToCart } from "../controllers/posts/addToCart.js";
 import { getAllItemsById } from "../controllers/posts/getAllItemsById.js";
 import { stripeSession } from "../controllers/posts/payment.js";
 import { getLatest3Items } from "../controllers/posts/getLatest3Items.js";
+import { afterPay } from "../controllers/posts/afterPay.js";
 
 const router = new Router();
 
@@ -114,6 +115,13 @@ router.get('/cart', verifyUser, getAllItemsById, async (req, res) => {
             isAdmin: req.session.role === 'admin' ? true : false,
             cartItems: req.cartItems
         });
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+});
+router.get('/success', verifyUser, async (req, res) => {
+    try {
+        afterPay(req, res);
     } catch (error) {
         res.status(500).send(error.message)
     }
