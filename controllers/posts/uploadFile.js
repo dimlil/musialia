@@ -8,6 +8,9 @@ export const uploadFile = async (req, res) => {
     });
 
     try {
+        if (!req.file) {
+            return 'No file uploaded'
+        }
         // Upload image to Cloudinary
         const result = await cloudinary.uploader.upload(req.file.path, {
             folder: 'musicalia'

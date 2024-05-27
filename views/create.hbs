@@ -1,3 +1,8 @@
+{{#if error}}
+<section class="errorContainer">
+    <p> {{error}}</p>
+</section>
+{{/if}}
 <form id="createForm" action="/create" method="POST" enctype="multipart/form-data">
     <h2>Създаване</h2>
     <div class="inputes-wrapper">
