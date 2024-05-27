@@ -20,7 +20,7 @@ export const validateRegister = async (email, password, rePassword) => {
     if (rePassword === '') {
         return 'Въведете потвърди паролата'
     }
-    if (password === rePassword) {
+    if (password !== rePassword) {
         return 'Паролите не съвпадат'
     }
 }
