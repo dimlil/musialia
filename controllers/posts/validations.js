@@ -17,11 +17,5 @@ export const validateCreate = async (name, manufacturer, description, type, pric
     if (quantity === '') {
         return 'Въведете производител';
     }
-    if (typeof price !== 'number') {
-        return 'Въведете число';
-    }
-    if (typeof quantity !== 'number') {
-        return 'Въведете число';
-    }
 }
 

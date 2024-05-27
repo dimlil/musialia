@@ -27,8 +27,8 @@ export const createItem = async (req, res) => {
         manufacturer,
         description,
         type,
-        price,
-        quantity
+        price: Number(price),
+        quantity: Number(quantity)
     })
     try {
         await item.save();
