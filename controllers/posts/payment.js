@@ -19,7 +19,6 @@ export const stripeSession = async (req, res) => {
         })),
         success_url: `${process.env.SERVER_URL}/success/${req.body.ids}`,
         cancel_url: `${process.env.SERVER_URL}/cart`,
-    })
-    // res.redirect(session.url);
+    });
     res.json({url: session.url})
 }
