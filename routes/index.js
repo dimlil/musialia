@@ -10,6 +10,7 @@ import { getAllItemsById } from "../controllers/posts/getAllItemsById.js";
 import { stripeSession } from "../controllers/posts/payment.js";
 import { getLatest3Items } from "../controllers/posts/getLatest3Items.js";
 import { afterPay } from "../controllers/posts/afterPay.js";
+import { upload } from "../config/muterMiddleware.js";
 
 const router = new Router();
 
@@ -67,7 +68,7 @@ router.get('/contacts', verifyUser, async (req, res) => {
         res.status(500).send(error.message);
     }
 })
-router.post('/create', async (req, res) => {
+router.post('/create', upload.single('file'), async (req, res) => {
     try {
         await createItem(req, res);
     } catch (error) {

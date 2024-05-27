@@ -1,11 +1,13 @@
 import itemsSchema from '../../models/item.js';
+import { uploadFile } from './uploadFile.js';
 
 export const createItem = async (req, res) => {
-    const { name, imageUrl, manufacturer, description, type, price, quantity } = req.body;
-
+    const { name, manufacturer, description, type, price, quantity } = req.body;
+    
+    const imgLink = await uploadFile(req, res);
     const item = new itemsSchema({
         name,
-        imageUrl,
+        imageUrl: imgLink,
         manufacturer,
         description,
         type,
